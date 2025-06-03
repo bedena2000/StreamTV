@@ -7,7 +7,7 @@ export default function SpinCircle() {
         cy="50"
         r="40"
         stroke="#808080"
-        strokeWidth="2"
+        strokeWidth="4"
         fill="none"
       />
 
@@ -17,7 +17,7 @@ export default function SpinCircle() {
         cy="50"
         r="40"
         stroke="white"
-        strokeWidth="2"
+        strokeWidth="4"
         fill="none"
         strokeDasharray="251"
         strokeDashoffset="251"
