@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { BeatLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import BestMoviesTVShows from "@/components/BestMoviesTVShows";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -39,6 +40,7 @@ export default function Home() {
         <MediaCenter movies={data} />
         <Subscription />
         <BestMoviesTVShows />
+        <Footer />
       </div>
     );
   }
