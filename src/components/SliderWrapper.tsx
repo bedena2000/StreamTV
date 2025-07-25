@@ -9,13 +9,20 @@ import { Swiper as SwiperCore } from "swiper";
 import CurrentSliderCircle from "@/components/CurrentSliderCircle";
 
 import "swiper/swiper-bundle.css";
+import { useNavigate } from "react-router-dom";
 
 export default function SliderWrapper({ movies }) {
   const swiperRef = useRef<SwiperCore | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const navigate = useNavigate();
 
   const changeSliderIndex = (newIndex: number) => {
     swiperRef.current?.slideToLoop(newIndex);
+  };
+
+  const handleMovie = (movieId: number) => {
+    navigate(`/movie_detail/${movieId}`);
+    console.log(movieId);
   };
 
   return (
@@ -50,9 +57,7 @@ export default function SliderWrapper({ movies }) {
                   filter: "brightness(0.6)",
                 }}
                 className="absolute top-0 left-0 w-full h-full z-10"
-              >
-
-              </div>
+              ></div>
               <div className="customContainer relative z-20">
                 <p className="text-white font-barlow font-medium text-[40px] mb-2 w-200">
                   {movie.title}
@@ -70,7 +75,10 @@ export default function SliderWrapper({ movies }) {
                   {movie.overview}
                 </div>
 
-                <button className="btn bg-[#5800C4] px-6 outline-none border-none rounded-[40px] text-white">
+                <button
+                  onClick={() => handleMovie(movie.id)}
+                  className="btn bg-[#5800C4] px-6 outline-none border-none rounded-[40px] text-white"
+                >
                   <FaRegPlayCircle size={24} color="white" />
                   <p>Play</p>
                 </button>

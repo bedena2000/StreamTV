@@ -14,7 +14,7 @@ export default function MovieListSlider({ movies }) {
   const swiperRef = useRef<SwiperCore | null>(null);
 
   const handleMovie = (movieId: number) => {
-    navigate(`/movie/${movieId}`);
+    navigate(`/movie_detail/${movieId}`);
     console.log(movieId);
   };
 

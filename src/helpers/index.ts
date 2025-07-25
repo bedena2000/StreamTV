@@ -32,3 +32,37 @@ export const getTopRatedTvSeries = async () => {
 
   return result.data;
 };
+
+// Get movie by id
+export const getMovieById = async (movieId: number) => {
+  try {
+    const response = await apiClient.get(`/movie/${movieId}`);
+
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to fetch movie details");
+  }
+};
+
+// Get trailer by id
+
+export const getTrailerById = async (movieId: number) => {
+  try {
+    const response = await apiClient.get(`/movie/${movieId}/videos`);
+
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to fetch movie details");
+  }
+};
+
+// Get all avaliables movie genres
+export const getGenres = async () => {
+  try {
+    const response = await apiClient.get(`/genre/movie/list`);
+
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to fetch movie details");
+  }
+};

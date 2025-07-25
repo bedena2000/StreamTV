@@ -45,11 +45,11 @@ export default function BestMoviesTVShows() {
   });
 
   const handleMovie = (movieId: number) => {
-    navigate(`/movie/${movieId}`);
+    navigate(`/movie_detail/${movieId}`);
   };
 
   const handleTVShow = (tvShowId: number) => {
-    navigate(`/tvshow/${tvShowId}`);
+    navigate(`/movie_detail/${tvShowId}`);
   };
 
   return (
