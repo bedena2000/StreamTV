@@ -29,7 +29,7 @@ const DropdownList: FC<DropDownListContent> = ({
       </p>
 
       {isModal && (
-        <div className="h-[600px] bg-cyan-900 absolute w-[80px] text-center translate-y-3 rounded-md overflow-auto">
+        <div className="h-[600px] bg-cyan-900 absolute w-[120px] text-center translate-y-3 rounded-md overflow-auto">
           {list.map((listItem) => (
             <div
               onClick={() => {

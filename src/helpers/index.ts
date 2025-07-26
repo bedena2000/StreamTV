@@ -66,3 +66,39 @@ export const getGenres = async () => {
     throw new Error("Failed to fetch movie details");
   }
 };
+
+// Search movie
+
+export const searchMovie = async (
+  name: string | "",
+  year: string | undefined,
+  genreId: number | string | undefined
+) => {
+  try {
+    let response;
+
+    if (!name) {
+      response = await apiClient.get(`/discover/movie`);
+    } else if (year === "any" && genreId === "any") {
+      response = await apiClient.get(`/search/movie?query=${name}`);
+    } else if (year === "any" && genreId === undefined) {
+      response = await apiClient.get(`/search/movie?query=${name}`);
+    } else if (year !== "any" && genreId === undefined) {
+      response = await apiClient.get(
+        `/search/movie?query=${name}&year=${year}`
+      );
+    } else if (year === "any" && genreId !== undefined && genreId !== "any") {
+      response = await apiClient.get(
+        `/search/movie?query=${name}&year=${year}&with_genres=${genreId}`
+      );
+    } else {
+      response = await apiClient.get(
+        `/search/movie?query=${name}&year=${year}&with_genres=${genreId}`
+      );
+    }
+
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to fetch movie details");
+  }
+};
