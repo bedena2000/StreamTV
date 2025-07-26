@@ -28,7 +28,7 @@ export default function Movies() {
     setSearchTerm(searchItem);
   };
 
-  const { data, error, isLoading } = useQuery({
+  const { data } = useQuery({
     queryKey: ["get_all_genres"],
     queryFn: getGenres,
   });
@@ -91,7 +91,7 @@ export default function Movies() {
           <div className="flex items-stretch gap-4">
             <input
               type="text"
-              placeholder="Search..."
+              placeholder="Search movies..."
               className="input w-full"
               onChange={(event) => handleSearch(event.target.value)}
             />

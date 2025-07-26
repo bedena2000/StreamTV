@@ -102,3 +102,36 @@ export const searchMovie = async (
     throw new Error("Failed to fetch movie details");
   }
 };
+
+// Search TV Shows
+export const searchShows = async (
+  name: string | "",
+  year: string | undefined,
+  genreId: number | string | undefined
+) => {
+  try {
+    let response;
+
+    if (!name) {
+      response = await apiClient.get(`/discover/tv`);
+    } else if (year === "any" && genreId === "any") {
+      response = await apiClient.get(`/search/tv?query=${name}`);
+    } else if (year === "any" && genreId === undefined) {
+      response = await apiClient.get(`/search/tv?query=${name}`);
+    } else if (year !== "any" && genreId === undefined) {
+      response = await apiClient.get(`/search/tv?query=${name}&year=${year}`);
+    } else if (year === "any" && genreId !== undefined && genreId !== "any") {
+      response = await apiClient.get(
+        `/search/tv?query=${name}&year=${year}&with_genres=${genreId}`
+      );
+    } else {
+      response = await apiClient.get(
+        `/search/tv?query=${name}&year=${year}&with_genres=${genreId}`
+      );
+    }
+
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to fetch tv shows details");
+  }
+};

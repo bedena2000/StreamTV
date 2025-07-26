@@ -38,37 +38,11 @@ export default function Header() {
               <div className="w-full h-[2px] bg-[#5800C4]"></div>
             )}
           </div>
-          <div className="relative ">
-            <Link
-              className={`${
-                isUrlMatch("/tvshows", pathname) && "font-semibold"
-              }`}
-              to="/tvshows"
-            >
-              Tvshows
-            </Link>
-            {isUrlMatch("/tvshows", pathname) && (
-              <div className="w-full h-[2px] bg-[#5800C4]"></div>
-            )}
-          </div>
-          <div className="relative ">
-            <Link
-              className={`${
-                isUrlMatch("/catalogue", pathname) && "font-semibold"
-              }`}
-              to="/catalogue"
-            >
-              Catalogue
-            </Link>
-            {isUrlMatch("/catalogue", pathname) && (
-              <div className="w-full h-[2px] bg-[#5800C4]"></div>
-            )}
-          </div>
         </div>
       </div>
 
       <div>
-        <Link className="hidden md:block" to="/search">
+        <Link className="hidden md:block" to="/movies">
           <CiSearch size={28} className="cursor-pointer" />
         </Link>
 

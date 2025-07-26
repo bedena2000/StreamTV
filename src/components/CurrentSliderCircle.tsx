@@ -1,4 +1,3 @@
-import React from "react";
 import SpinCircle from "@/components/SpinCircle";
 
 type CurrentSliderCircleProps = {

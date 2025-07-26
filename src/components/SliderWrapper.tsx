@@ -2,7 +2,7 @@ import type { Movie } from "@/types";
 import { FaRegPlayCircle } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { Swiper as SwiperCore } from "swiper";
@@ -11,7 +11,7 @@ import CurrentSliderCircle from "@/components/CurrentSliderCircle";
 import "swiper/swiper-bundle.css";
 import { useNavigate } from "react-router-dom";
 
-export default function SliderWrapper({ movies }) {
+export default function SliderWrapper({ movies }: {movies: any}) {
   const swiperRef = useRef<SwiperCore | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const navigate = useNavigate();
@@ -22,7 +22,6 @@ export default function SliderWrapper({ movies }) {
 
   const handleMovie = (movieId: number) => {
     navigate(`/movie_detail/${movieId}`);
-    console.log(movieId);
   };
 
   return (

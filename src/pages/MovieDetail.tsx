@@ -2,16 +2,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BounceLoader } from "react-spinners";
 import { getMovieById, getNowPlayingMovies, getTrailerById } from "@/helpers";
 import { useQuery } from "@tanstack/react-query";
-import { useState, useEffect, useRef, cache } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaLongArrowAltDown } from "react-icons/fa";
 import Footer from "@/components/Footer";
-import MovieSlider from "@/components/MovieSlider";
-import { useQueryClient } from "@tanstack/react-query";
-import MediaCenter from "@/components/MediaCenter";
-import MovieListSlider from "@/components/MovieListSlider";
 import MovieList from "@/components/MovieList";
-
-
 
 export default function MovieDetail() {
   const { movieId } = useParams();
@@ -19,8 +13,6 @@ export default function MovieDetail() {
   const [isMinLoading, setIsMinLoading] = useState(true);
   const navigate = useNavigate();
   const trailerRef = useRef<HTMLDivElement>(null);
-  const queryClient = useQueryClient();
-  const [cachedMovies, setCachedMovies] = useState([]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -29,14 +21,6 @@ export default function MovieDetail() {
 
     return () => clearTimeout(timer);
   }, []);
-
-  // useEffect(() => {
-  //   const cachedData = queryClient.getQueryData(["get_now_playing_movies"]);
-
-  //   if (cachedData) {
-  //     setCachedMovies(cachedData.results);
-  //   }
-  // }, []);
 
   const {
     data: movie,
@@ -47,11 +31,7 @@ export default function MovieDetail() {
     queryFn: () => getMovieById(movieIdInt),
   });
 
-  const {
-    data: movieTrailer,
-    isLoading: movieTrailerLoading,
-    error: movieTrailerError,
-  } = useQuery({
+  const { data: movieTrailer } = useQuery({
     queryKey: ["get_trailer_by_id", movieId],
     queryFn: () => getTrailerById(movieIdInt),
   });
@@ -86,9 +66,7 @@ export default function MovieDetail() {
     }
   };
 
-  console.log(cachedMovies);
-
-  if (movie && cachedMovies) {
+  if (movie && cachedMovie) {
     const genres = movie.genres;
     const originalLanguage = movie.original_language;
     const overview = movie.overview;
@@ -204,7 +182,7 @@ export default function MovieDetail() {
             </div>
 
             <div className="mt-[140px] mb-24">
-              {cachedMovies && <MovieList movies={cachedMovie.results} />}
+              {cachedMovie && <MovieList movies={cachedMovie.results} />}
             </div>
           </div>
         </div>

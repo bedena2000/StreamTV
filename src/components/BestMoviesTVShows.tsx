@@ -13,10 +13,7 @@ export default function BestMoviesTVShows() {
   const swiperRef = useRef<SwiperCore | null>(null);
 
   const {
-    isPending: isMoviePending,
-    isLoading: isMovieLoading,
     data: movieData,
-    error: movieError,
   } = useQuery({
     queryKey: ["get_popular_movies"],
     queryFn: getPopularMovies,
@@ -29,10 +26,7 @@ export default function BestMoviesTVShows() {
   });
 
   const {
-    isPending: isTvPending,
-    isLoading: isTvloading,
     data: tvData,
-    error: isTvError,
   } = useQuery({
     queryKey: ["get_popular_tv_shows"],
     queryFn: getPopularTvSeries,
@@ -193,7 +187,7 @@ export default function BestMoviesTVShows() {
                 },
               }}
             >
-              {tvData?.results.map((tvShow) => {
+              {tvData?.results.map((tvShow: any) => {
                 return (
                   <SwiperSlide
                     className="cursor-pointer"

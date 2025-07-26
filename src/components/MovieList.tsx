@@ -5,7 +5,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { Swiper as SwiperCore } from "swiper";
 import "swiper/swiper-bundle.css";
 import { useRef } from "react";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function MovieList({ movies }: { movies: Movie[] }) {
   const navigate = useNavigate();
@@ -14,7 +14,6 @@ export default function MovieList({ movies }: { movies: Movie[] }) {
 
   const handleMovie = (movieId: number) => {
     navigate(`/movie_detail/${movieId}`);
-    console.log(movieId);
   };
 
   return (

@@ -1,8 +1,6 @@
 import MovieListSlider from "@/components/MovieListSlider";
-import { getNowPlayingMovies } from "@/helpers";
-import { QueryCache, useQuery, useQueryClient } from "@tanstack/react-query";
 
-export default function MediaCenter({ movies }) {
+export default function MediaCenter({ movies }: { movies: any }) {
   return (
     <div className="font-barlow -translate-y-[290px] relative z-200">
       <div className="customContainer">
